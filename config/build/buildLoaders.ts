@@ -68,9 +68,9 @@ export function buildLoaders(options: BuildOptions) : Types.ModuleOptions['rules
 	const cssLoader = {
 		test: /\.s[ac]ss$/i,
 		use: [
-			isDev ? "style-loader" : MiniCssExtractPlugin.loader,		// Creates `style` nodes from JS strings
-			cssLoaderWithModules,										// Translates CSS into CommonJS
-			"sass-loader",												// Compiles Sass to CSS
+			isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+			cssLoaderWithModules,
+			"sass-loader",
 		],
 	}
 

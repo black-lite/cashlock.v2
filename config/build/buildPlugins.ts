@@ -38,7 +38,7 @@ export function buildPlugins({mode, paths, analyzer, platform}: BuildOptions) : 
 			new ForkTsCheckerWebpackPlugin(),
 			new CopyPlugin({
 				patterns: [
-					{ from: path.resolve(paths.public, 'locales'), to: path.resolve(paths.output, 'locales') },
+					{ from: path.resolve(paths.public, 'fonts'), to: path.resolve(paths.output, 'fonts') },
 				],
 			}),
 		);
