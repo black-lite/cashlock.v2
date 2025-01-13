@@ -1,0 +1,32 @@
+a.right {}
+a.left {}
+
+div.header {
+	padding: 10px;
+
+	border-radius: 0 0 12px 12px;
+	box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
+
+
+	> div.top {
+		display: flex;
+		> a {
+
+		}
+		div {
+			flex: 1;
+		}
+	}
+	&.main {
+		> div.top {
+			> div { text-align: center; line-height: 24px; }
+			> a {
+				width: 24px; height: 24px; background-position: center; background-size: 24px; background-repeat: no-repeat;
+
+				&.right {
+					background-image: url("../../assets/list.svg");
+				}
+			}
+		}
+	}
+}
