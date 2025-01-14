@@ -1,29 +1,26 @@
 import React from "react";
 import classes from './Header.module.scss';
+import {Subheader, SwitchState} from "../Subheader/Subheader";
 
 interface IHeaderProps {
-	cls ?: string,
-	text ?: string,
-	children ?: React.ReactNode
+	bankCash : string,
+	bankAccount : string,
+	onChangeState: (state: SwitchState) => void,
+	initSwitchState: SwitchState,
 }
 
-export const Header = (props: IHeaderProps) => {
+export const Header = ({bankCash, bankAccount, onChangeState, initSwitchState}: IHeaderProps) => {
 	return (
 		<div className={`${classes.header} ${classes.main}`}>
 			<div className={classes.top}>
-				<a className={classes.left}/>
-				<div>{props.text}</div>
-				<a className={classes.right} onClick={() =>
-					{
-						fetch('/expanses').then(list =>
-						{
-							console.log(list);
-						})
-						.catch(e => console.log(e))
-					}
-				}/>
+				<a className={classes.left} />
+				<div>
+					<div>{bankAccount}</div>
+					<div>{bankCash}</div>
+				</div>
+				<a className={classes.right} />
 			</div>
-			{ props.children && <div className="bottom">{props.children}</div> }
+			<Subheader initSwitchState={initSwitchState} onChangeState={onChangeState}/>
 		</div>
 	);
 };

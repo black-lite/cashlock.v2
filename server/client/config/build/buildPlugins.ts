@@ -38,8 +38,8 @@ export function buildPlugins({mode, paths, analyzer, platform}: BuildOptions) : 
 			}),
 			new CopyPlugin({
 				patterns: [
-					{ from: path.resolve(paths.public, 'fonts'), to: path.resolve(paths.output, 'fonts') },
-					{ from: path.resolve(paths.src, 'assets', 'fonts', 'Roboto'), to: path.resolve(paths.output, 'fonts') },
+					// { from: path.resolve(paths.public, 'fonts'), to: path.resolve(paths.output, 'fonts') },
+					{ from: path.resolve(paths.src, 'assets', 'fonts', 'Inter'), to: path.resolve(paths.output, 'fonts') },
 				],
 			}),
 		);

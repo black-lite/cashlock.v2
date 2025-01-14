@@ -75,8 +75,8 @@ export function buildLoaders(options: BuildOptions) : Types.ModuleOptions['rules
 	}
 
 	const fontLoader = {
-		// test: /\.(woff|woff2|eot|ttf|otf)$/i,
-		test: /\.ttf$/i,
+		test: /\.(woff|woff2|eot|ttf|otf)$/i,
+		// test: /\.ttf$/i,
 		type: 'asset/resource',
 	};
 

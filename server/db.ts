@@ -1,8 +1,9 @@
-import { Sequelize } from 'sequelize';
+import Model, {DataTypes, ModelCtor, Sequelize} from 'sequelize';
 
 export class DBSequelize
 {
 	sequelize: Sequelize;
+	bankAccount: Model;
 
 	constructor()
 	{
@@ -10,21 +11,50 @@ export class DBSequelize
 			dialect: 'sqlite',
 			storage: '../db.db'
 		});
+
+		this.defineModel();
 	}
 
-	connect(success: () => void, error: (e: string) => void)
+	connect(): Promise<void>
 	{
-		try
+		return new Promise<void>((resolve, reject) =>
 		{
-			this.sequelize.authenticate().then(() =>
+			try { this.sequelize.authenticate().then(() => resolve()); }
+			catch (e) { reject(e); }
+		})
+	}
+
+	defineModel()
+	{
+		this.bankAccount = this.sequelize.define(
+			'bank_accounts', {
+				id: {
+					type: DataTypes.INTEGER
+				},
+				pid: {
+					type: DataTypes.INTEGER
+				},
+				name: {
+					type: DataTypes.STRING
+				},
+				cash: {
+					type: DataTypes.REAL
+				},
+				unit: {
+					type: DataTypes.SMALLINT
+				},
+				timecr: {
+					type: DataTypes.DATE
+				},
+				timemd: {
+					type: DataTypes.DATE
+				},
+			},
 			{
-				success();
-			});
-		}
-		catch (e)
-		{
-			error(e);
-			console.log('Невозможно выполнить подключение к БД: ', e);
-		}
+				tableName: 'bank_accounts',
+				createdAt: 'timecr',
+				updatedAt: 'timemd',
+			}
+		);
 	}
 }

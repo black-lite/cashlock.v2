@@ -1,0 +1,14 @@
+div.subheader {
+	padding: 10px;
+
+	> div {
+		display: flex; justify-content: space-between; align-items: center;
+
+		> a {
+			font-weight: 500;
+			&.act {
+				box-shadow: 0 4px 0 0 #3C62FB;
+			}
+		}
+	}
+}
