@@ -1,7 +1,20 @@
 import path from 'path';
 import Types from 'webpack';
-import {buildWebpack} from "./config/build/buildWebpack";
-import {BuildMode, BuildPaths, BuildPlatform} from "./config/build/types/types";
+import {buildWebpack} from "./server/client/config/build/buildWebpack";
+import {BuildMode, BuildPaths, BuildPlatform} from "./server/client/config/build/types/types";
+
+
+// import { Sequelize } from 'sequelize';
+//
+// const sequelize = new Sequelize({
+// 	dialect: 'sqlite',
+// 	storage: '../db.db'
+// });
+//
+// try { sequelize.authenticate().then(() => {
+// 	console.log(sequelize.config);
+// }); }
+// catch (e) { console.log('Невозможно выполнить подключение к БД: ', e); }
 
 
 interface EnvVariables {
@@ -13,11 +26,11 @@ interface EnvVariables {
 export default (env: EnvVariables) =>
 {
 	const paths: BuildPaths = {
-		src			: path.resolve(__dirname, 'src'),
-		html		: path.resolve(__dirname, 'public', 'index.html'),
-		entry		: path.resolve(__dirname, 'src', 'index.tsx'),
-		output		: path.resolve(__dirname, 'build'),
-		public		: path.resolve(__dirname, 'public'),
+		src			: path.resolve(__dirname, 'server', 'client', 'src'),
+		html		: path.resolve(__dirname, 'server', 'client', 'public', 'index.html'),
+		entry		: path.resolve(__dirname, 'server', 'client', 'src', 'index.tsx'),
+		output		: path.resolve(__dirname, 'server', 'client', 'build'),
+		public		: path.resolve(__dirname, 'server', 'client', 'public'),
 	}
 
 	const config: Types.Configuration = buildWebpack({

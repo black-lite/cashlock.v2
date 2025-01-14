@@ -1,4 +1,4 @@
-import {ListItem} from "@/components/ListItem";
+import {ListItem} from "./ListItem";
 
 interface IMainProps {
 	items: string[],

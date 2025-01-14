@@ -16,7 +16,7 @@ export function buildPlugins({mode, paths, analyzer, platform}: BuildOptions) : 
 
 	const plugins: Configuration['plugins'] = [
 		new CleanWebpackPlugin(),
-		new HtmlWebpackPlugin({ template: paths.html, favicon: path.resolve(paths.public, 'favicon.ico') }),
+		new HtmlWebpackPlugin({ template: paths.html, title: 'Cashlock V2', favicon: path.resolve(paths.public, 'favicon.ico') }),
 		new webpack.DefinePlugin({
 			__PLATFORM: JSON.stringify(platform)
 		}),
@@ -31,14 +31,15 @@ export function buildPlugins({mode, paths, analyzer, platform}: BuildOptions) : 
 	if (isProd)
 	{
 		plugins.push(
-			new MiniCssExtractPlugin({
-			filename: 'css/[name].[contenthash:8].css',
-			chunkFilename: 'css/[name].[contenthash:8].css',
-			}),
 			new ForkTsCheckerWebpackPlugin(),
+			new MiniCssExtractPlugin({
+				filename: 'css/[name].[contenthash:8].css',
+				chunkFilename: 'css/[name].[contenthash:8].css',
+			}),
 			new CopyPlugin({
 				patterns: [
 					{ from: path.resolve(paths.public, 'fonts'), to: path.resolve(paths.output, 'fonts') },
+					{ from: path.resolve(paths.src, 'assets', 'fonts', 'Roboto'), to: path.resolve(paths.output, 'fonts') },
 				],
 			}),
 		);

@@ -74,17 +74,16 @@ export function buildLoaders(options: BuildOptions) : Types.ModuleOptions['rules
 		],
 	}
 
-	// const fontLoader = {
-	// 	test: /\.(woff(2)?|ttf|eot)$/,
-	// 	type: 'asset/resource',
-	// 	generator: {
-	// 		filename: './fonts/[name].[ext]',
-	// 	},
-	// };
+	const fontLoader = {
+		// test: /\.(woff|woff2|eot|ttf|otf)$/i,
+		test: /\.ttf$/i,
+		type: 'asset/resource',
+	};
 
 	// Порядок имеет значение
 	return [
 		assetLoader,
+		fontLoader,
 		// tsLoader,
 		babelLoader,
 		cssLoader,

@@ -13,7 +13,15 @@ export const Header = (props: IHeaderProps) => {
 			<div className={classes.top}>
 				<a className={classes.left}/>
 				<div>{props.text}</div>
-				<a className={classes.right}/>
+				<a className={classes.right} onClick={() =>
+					{
+						fetch('/expanses').then(list =>
+						{
+							console.log(list);
+						})
+						.catch(e => console.log(e))
+					}
+				}/>
 			</div>
 			{ props.children && <div className="bottom">{props.children}</div> }
 		</div>

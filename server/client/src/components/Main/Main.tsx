@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 
-import { Header } from "@/components/Header/Header";
-import { MainContent } from "@/components/MainContent/MainContent";
+import { Header } from "../Header/Header";
+import { MainContent } from "../MainContent/MainContent";
 
 import classesApp from './App.module.scss';
 
