@@ -2,10 +2,10 @@
 	"compilerOptions": {
 		"outFile": "./index.js",
 		"noImplicitAny": true,
-		"module": "CommonJS",
+		"module": "None",
 		"target": "ESNext",
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
 		"alwaysStrict": true
-	},
+	}
 }

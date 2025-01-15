@@ -1,60 +1,17 @@
-import Model, {DataTypes, ModelCtor, Sequelize} from 'sequelize';
+import { Database } from 'sqlite3';
 
-export class DBSequelize
+export class DB
 {
-	sequelize: Sequelize;
-	bankAccount: Model;
+	protected database: Database;
 
 	constructor()
 	{
-		this.sequelize = new Sequelize({
-			dialect: 'sqlite',
-			storage: '../db.db'
-		});
-
-		this.defineModel();
+		this.database = new Database('../db.sqbpro');
+		console.log(this.database);
 	}
 
-	connect(): Promise<void>
+	getDB() : Database
 	{
-		return new Promise<void>((resolve, reject) =>
-		{
-			try { this.sequelize.authenticate().then(() => resolve()); }
-			catch (e) { reject(e); }
-		})
-	}
-
-	defineModel()
-	{
-		this.bankAccount = this.sequelize.define(
-			'bank_accounts', {
-				id: {
-					type: DataTypes.INTEGER
-				},
-				pid: {
-					type: DataTypes.INTEGER
-				},
-				name: {
-					type: DataTypes.STRING
-				},
-				cash: {
-					type: DataTypes.REAL
-				},
-				unit: {
-					type: DataTypes.SMALLINT
-				},
-				timecr: {
-					type: DataTypes.DATE
-				},
-				timemd: {
-					type: DataTypes.DATE
-				},
-			},
-			{
-				tableName: 'bank_accounts',
-				createdAt: 'timecr',
-				updatedAt: 'timemd',
-			}
-		);
+		return this.database;
 	}
 }
