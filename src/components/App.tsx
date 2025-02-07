@@ -31,7 +31,7 @@ const App = () => {
 
 	return (
 		<div>
-			<Header initSwitchState={SwitchState.expenses} onChangeState={(s) => console.log(s)} bankAccount={0} bankCash={0}/>
+			<Header initSwitchState={SwitchState.expenses} onChangeState={(s) => console.log(s)} bankAccount={'0'} bankCash={'0'}/>
 			<MainContent items={items}/>
 		</div>
 	);

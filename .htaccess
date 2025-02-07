@@ -1,0 +1,18 @@
+<IfModule mod_headers.c>
+	Header set Access-Control-Allow-Origin: *
+</IfModule>
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+
+
+	RewriteCond %{REQUEST_FILENAME} -f
+	RewriteRule ^.*\.(htaccess|htpasswd|tpl|inc)$ /404.html [R=404,NC,L]
+	RewriteRule ^.*\.(index)$ /build/index.html [NC,L,QSA]
+
+#	RewriteCond %{REQUEST_FILENAME} !-f
+#	RewriteCond %{REQUEST_FILENAME} !-d
+#	RewriteRule ^xhr/$ /xhr.php [NC,L,QSA]
+
+	ErrorDocument 403 /403.html
+	ErrorDocument 404 /404.html
+</IfModule>

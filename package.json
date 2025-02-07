@@ -1,16 +1,10 @@
 {
 	"name": "webpack",
 	"version": "1.0.0",
-	"main": "server/client/src/index.tsx",
+	"main": "src/index.tsx",
 	"scripts": {
-		"webpack": "webpack --env mode=development",
-		"serve:dev": "webpack serve --color --env mode=development",
-		"serve:prod": "webpack serve --env mode=production",
-		"build:dev": "webpack --env mode=development",
-		"build:prod": "webpack --env mode=production",
-		"start:": "npm-run-all webpack ts:build watch:server",
-		"ts:build": "ts-node -p server/tsconfig.server.json ./server/db.ts && ts-node ./server/server.ts",
-		"watch:server": "nodemon"
+		"dev": "webpack --env mode=development",
+		"prod": "webpack --env mode=production"
 	},
 	"keywords": [],
 	"author": "blacklite21",
@@ -56,16 +50,11 @@
 		"file-loader": "^6.2.0",
 		"fork-ts-checker-webpack-plugin": "^9.0.0",
 		"i": "^0.3.7",
-		"passport": "^0.7.0",
-		"passport-local": "^1.0.0",
 		"path": "^0.12.7",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-refresh-typescript": "^2.0.9",
 		"react-router-dom": "^6.16.0",
-		"scheduler": "^0.25.0",
-		"sqlite3": "^5.1.7",
-		"url": "^0.11.4",
-		"webpack-bundle-analyzer": "^4.9.1"
+		"url": "^0.11.4"
 	}
 }

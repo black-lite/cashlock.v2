@@ -1,6 +1,0 @@
-{
-	"watch": ["./server"],
-	"ext": "ts",
-	"exec": "npm-run-all ts-node ./server/db.ts ts-node ./server/server.ts"
-
-}
