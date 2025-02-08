@@ -1,31 +1,26 @@
+import path from "path";
 import webpack, { Configuration  } from 'webpack';
 import {BuildOptions} from "./types/types";
-import {CleanWebpackPlugin} from "clean-webpack-plugin";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
-import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
-import path from "path";
-import CopyPlugin from "copy-webpack-plugin";
 
-export function buildPlugins({mode, paths, analyzer, platform}: BuildOptions) : Configuration['plugins']
+import CopyPlugin from "copy-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import {CleanWebpackPlugin} from "clean-webpack-plugin";
+
+export function buildPlugins({mode, paths, analyzer}: BuildOptions) : Configuration['plugins']
 {
 	const isDev = mode == "development";
 	const isProd = mode == "production";
 
 	const plugins: Configuration['plugins'] = [
 		new CleanWebpackPlugin(),
-		new HtmlWebpackPlugin({ template: paths.html, title: 'Cashlock V2', favicon: path.resolve(paths.public, 'favicon.ico') }),
-		new webpack.DefinePlugin({
-			__PLATFORM: JSON.stringify(platform)
-		}),
+		new HtmlWebpackPlugin({ template: paths.html, title: 'Cashlock V2', publicPath: '/build/', favicon: path.resolve(paths.public, 'favicon.ico') }),
 	];
 
 	if (isDev)
 	{
-		plugins.push(new webpack.ProgressPlugin())
-		plugins.push(new ReactRefreshWebpackPlugin())
+		plugins.push(new webpack.ProgressPlugin());
 	}
 
 	if (isProd)
@@ -44,8 +39,6 @@ export function buildPlugins({mode, paths, analyzer, platform}: BuildOptions) : 
 			}),
 		);
 	}
-
-	if (analyzer) plugins.push(new BundleAnalyzerPlugin())
 
 	return plugins;
 }

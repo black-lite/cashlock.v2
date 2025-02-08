@@ -23,7 +23,9 @@ export function buildWebpack(options: BuildOptions) : any
 		},
 		plugins: buildPlugins(options),
 		resolve: buildResolvers(options),
-		devServer: isDev ? buildDevServer(options) : undefined,
-		devtool: isDev && 'inline-source-map',
+		devServer: undefined,
+		devtool: 'inline-source-map',
+		// devServer: isDev ? buildDevServer(options) : undefined,
+		// devtool: isDev && 'inline-source-map',
 	}
 }

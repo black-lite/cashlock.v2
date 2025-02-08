@@ -20,11 +20,11 @@ const App = () => {
 
 	useEffect(() =>
 	{
-		fetch('/routes').then(async result => {
+		fetch('/xhr/?s=routes').then(async result => {
 			routesPath = await result.json();
 		});
 
-		fetch('/cash').then(async result => {
+		fetch('/xhr/?s=cash').then(async result => {
 			setCash(await result.json());
 		});
 	});
