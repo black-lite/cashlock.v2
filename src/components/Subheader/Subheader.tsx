@@ -16,28 +16,21 @@ export const Subheader = ({onChangeState, initSwitchState}: ISubheaderProps) =>
 	{
 		return <a
 			className={ state == switchState ? classes.act : '' }
-			onClick={ () =>
+			onClick={ () => {
+				setState((prev) =>
 				{
-					setState((prev) =>
-					{
-						if (prev == switchState) return prev;
+					if (prev == switchState) return prev;
 
-						onChangeState(switchState);
-						return switchState;
-					})
-				}
-			}
+					onChangeState(switchState);
+					return switchState;
+				});
+			} }
 		>{txt}</a>
 	}
 
 	return (
 		<div className={classes.subheader}>
-			<div>
-				{ btn(SwitchState.expenses, 'РАСХОДЫ') }
-				{ btn(SwitchState.revenues, 'ДОХОДЫ') }
-				{/*<button className={state == SwitchState.expenses ? classes.act : ''} onClick={() => setState(() => { onChangeState(SwitchState.expenses); return SwitchState.expenses; })}>Расходы</button>*/}
-				{/*<button className={state == SwitchState.revenues ? classes.act : ''} onClick={() => setState(() => { onChangeState(SwitchState.revenues); return SwitchState.revenues; })}>Доходы</button>*/}
-			</div>
+			<div>{ btn(SwitchState.expenses, 'РАСХОДЫ') }{ btn(SwitchState.revenues, 'ДОХОДЫ') }</div>
 		</div>
 	);
 };
