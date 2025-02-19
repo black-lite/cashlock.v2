@@ -10,8 +10,7 @@
 
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule ^xhr/?s=(.*)&l=(.*)$ /xhr.php?s=$1&l=$2 [NC,L,QSA]
-	RewriteRule ^xhr/?s=(.*)$ /xhr.php?s=$1 [NC,L,QSA]
+	RewriteRule ^xhr/(.*)$ /index.xhr.php [NC,L,QSA]
 
 	ErrorDocument 403 /403.html
 	ErrorDocument 404 /404.html
