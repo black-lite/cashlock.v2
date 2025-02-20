@@ -16,15 +16,13 @@
 	array_splice($exploded, 0, 1);
 
 	$rule = ['users', ':id'];
-	$crule = count($rule);
-	if (count($exploded) !== count($rule)) send_json(['state' => 'error', 'message' => "Ожидалось другое количество параметров ({$crule})" ]);
+	$count_rules = count($rule);
+	if (count($exploded) !== $count_rules) send_json(['state' => 'error', 'message' => "Ожидалось другое количество параметров ({$count_rules})" ]);
 
 	foreach ($rule as $key => $item)
 	{
-		if ($item == ':id')
-		{
-			if (!preg_match('/[0-9]/', $exploded[$key])) send_json(['state' => 'error', 'message' => 'Цифры не найдены']);
-		}
+		if ($item == ':id' && !preg_match('/[0-9]/', $exploded[$key])) send_json(['state' => 'error', 'message' => 'Цифры не найдены']);
+		else if ($item == ':id' && !preg_match('/[0-9]/', $exploded[$key])) send_json(['state' => 'error', 'message' => 'Цифры не найдены']);
 	}
 
 	header('HTTP/1.0 403 Forbidden');

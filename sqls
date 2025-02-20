@@ -1,0 +1,14 @@
+CREATE TABLE `cashlock`.`bank_accounts`
+(
+	`id`			INT NOT NULL AUTO_INCREMENT ,
+	`state`			TINYINT NOT NULL ,
+	`timecr`		DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+	`timemd`		DATETIME on update CURRENT_TIMESTAMP NOT NULL ,
+	`prifile_id`	INT NOT NULL ,
+	`cash`			FLOAT NULL DEFAULT NULL ,
+	`unit`			TINYINT NOT NULL ,
+	PRIMARY KEY (`id`)
+)
+ENGINE = InnoDB;
+
+For profile table: id, state, timecr, timemd, login, password, salt
